@@ -1,0 +1,47 @@
+﻿@using TaskApp.Domain.Entities
+@using TaskApp.Domain.Concrete
+@model IEnumerable<TaskItem>
+@{
+    ViewBag.Title = "List";
+}
+
+<head>
+    <link href="~/Scripts/countdown.js" />
+</head>
+<h2>List</h2>
+
+<script>
+        var time = 0;
+        var interval = 0;
+
+        function StartTimer(elementId, timeInit) {
+                StopTimer();
+                time = timeInit;
+                interval = setInterval(function () { IncrementTime(elementId) }, 1000);
+            }
+
+            function IncrementTime(elementId) {
+                console.log("Increment");
+                time = time + 1;
+                UpdateTimerDisplay(elementId);
+            }
+
+            function UpdateTimerDisplay(elementId) {
+
+                document.getElementById(elementId).value = time;
+            }
+
+            function StopTimer() {
+                clearInterval(interval);
+            }
+</script>
+@Html.ValidationSummary()
+@foreach(var task in Model)
+{
+    
+    @Html.Partial("TaskSummary",task)
+
+
+}
+
+@Html.ActionLink("Add Task","AddTaskItem")

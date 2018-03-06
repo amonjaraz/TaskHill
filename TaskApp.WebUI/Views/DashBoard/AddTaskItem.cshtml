@@ -1,0 +1,18 @@
+﻿@using TaskApp.WebUI.ViewModels;
+@model AddTaskItemViewModel
+@{
+    ViewBag.Title = "AddTaskItem";
+}
+
+<h2>AddTaskItem</h2>
+
+@Html.ValidationSummary();
+@using (Html.BeginForm())
+{
+    @Html.TextBoxFor(x=>x.TaskItemDescription)
+    @Html.TextBoxFor(x=>x.TaskItemParentId)
+
+    
+    <input type="submit" value="Add" />
+}
+
