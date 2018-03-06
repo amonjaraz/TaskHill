@@ -11,6 +11,5 @@ namespace TaskApp.WebUI.ViewModels
     {
         [Required]
         public string TaskItemDescription { get; set; }
-        public int? TaskItemParentId { get; set; }
     }
 }

@@ -19,11 +19,11 @@ namespace TaskApp.Domain.Entities
         [Required]
         public int Time { get; set; }
         //public DateTime DateCreated { get; set; }
-        public int Level { get; set; }
+        //public int Level { get; set; }
         
-        public bool Subdivided { get; set; }
-        public int? ParentId { get; set; }
-        public int CategoryId { get; set; }
+        //public bool Subdivided { get; set; }
+        //public int? ParentId { get; set; }
+        //public int CategoryId { get; set; }
 
         public TaskItem()
         {

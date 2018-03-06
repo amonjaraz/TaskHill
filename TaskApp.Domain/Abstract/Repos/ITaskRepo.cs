@@ -12,6 +12,5 @@ namespace TaskApp.Domain.Abstract.Repos
         //Todo Add more useful methods here for Task items.
         string GetTaskDesc(int id);
         IEnumerable<TaskItem> GetAllTasks();
-        void UpdateParentTasks(TaskItem item, bool increase);
     }
 }

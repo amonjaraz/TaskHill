@@ -41,7 +41,6 @@ namespace TaskApp.WebUI.Controllers
                 if (obj != null)
                 {
                     obj.Time = item.Time;
-                    _unitOfWork.Tasks.UpdateParentTasks(item,true);
                     _unitOfWork.Complete();
                 }
                 return RedirectToAction("List");
@@ -60,7 +59,6 @@ namespace TaskApp.WebUI.Controllers
             if (obj != null)
             {
                 _unitOfWork.Tasks.Remove(obj);
-                _unitOfWork.Tasks.UpdateParentTasks(obj, false);
                 _unitOfWork.Complete();
             }
             return RedirectToAction("List");
@@ -77,14 +75,12 @@ namespace TaskApp.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                TaskItem newTaskItem = new TaskItem { Description = item.TaskItemDescription, ParentId = item.TaskItemParentId };
+                TaskItem newTaskItem = new TaskItem { Description = item.TaskItemDescription};
                 _unitOfWork.Tasks.Add(newTaskItem);
                 _unitOfWork.Complete();
                 return RedirectToAction("List");
             }
             else return View();
-
-            
         }
     }
 }
