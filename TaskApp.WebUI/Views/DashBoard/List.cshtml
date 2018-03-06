@@ -38,10 +38,7 @@
 @Html.ValidationSummary()
 @foreach(var task in Model)
 {
-    
     @Html.Partial("TaskSummary",task)
-
-
 }
 
 @Html.ActionLink("Add Task","AddTaskItem")
