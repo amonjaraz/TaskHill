@@ -127,18 +127,14 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
     <Content Include="Views\DashBoard\List.cshtml" />
-    <Content Include="Views\Experimental\Index.cshtml" />
     <Content Include="Views\Shared\TaskSummary.cshtml" />
     <Content Include="Views\DashBoard\Index.cshtml" />
     <Content Include="Views\DashBoard\AddTaskItem.cshtml" />
-    <Content Include="Views\DashBoard\TestTreeList.cshtml" />
-    <Content Include="Views\Shared\TestTreeSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
-    <Compile Include="Controllers\ExperimentalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

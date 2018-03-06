@@ -99,28 +99,5 @@ namespace TaskApp.WebUI.Controllers
 
             
         }
-
-        public ActionResult TestTreeList()
-        {
-            TaskTree parent1 = new TaskTree { Name = "Parent 1" };
-            TaskTree child1p1 = new TaskTree { Name = "Child 1 parent 1" };
-            TaskTree child1c1 = new TaskTree { Name = "Child 2 parent 1" };
-            TaskTree parent2 = new TaskTree { Name = "Parent 2" };
-            TaskTree child1p2 = new TaskTree { Name = "Child 1 parent 2" };
-
-            parent1.Children = new List<TaskTree>();
-            //child1p1.Children = new List<TaskTree>();
-            //child1p1.Children.Add(child1c1);
-            parent1.Children.Add(child1p1);
-            parent1.Children.Add(child1c1);
-
-            parent2.Children = new List<TaskTree>();
-            parent2.Children.Add(child1p2);
-
-            List<TaskTree> tree = new List<TaskTree>();
-            tree.Add(parent1);
-            tree.Add(parent2);
-            return View(tree);
-        }
     }
 }
