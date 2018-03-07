@@ -1,36 +1,40 @@
 ﻿@model TaskApp.Domain.Entities.TaskItem
 
-<div class="well">
-    <p>Desc: @Model.Description</p>
-    <p>ID: @Model.TaskItemId</p>
-    <p>Time: @Model.Time</p>
-    @{
-        string TimerId = "TimerDisplay" + @Model.TaskItemId.ToString();
-        int taskItemId = Model.TaskItemId;
-        int taskTime = Model.Time;
-        
-    }
-    @using (Html.BeginForm("List", "DashBoard"))
-    {
-        <div>
-            <p>@Model.TaskItemId</p>
+@{
+    string TimerId = "VisibleTimerDisplay" + @Model.TaskItemId.ToString();
+    string hiddenTimerId = "hiddenTimer" + @Model.TaskItemId.ToString();
+    int taskItemId = Model.TaskItemId;
+}
+
+    <th class="text-left">@Model.Description</th>
+    
+        @using (Html.BeginForm("List", "DashBoard"))
+        {
+            @Html.Hidden("TaskItemId", taskItemId)
+            @* @Html.TextBox("Time", (object)taskTime , new { @id = TimerId })   This causes an error described here; https://blogs.msdn.microsoft.com/simonince/2010/05/05/asp-net-mvcs-html-helpers-render-the-wrong-value/*@
+            <input type="hidden" name="Time" value="@Model.Time" id="@hiddenTimerId">
+            <th class="text-center"><span id="@TimerId">@Model.Time</span></th>
+            <th><input type="submit" class="btn btn-default" value="Save" /></th>
+        }
+    
+    <th>
+        <button class="btn btn-default" onclick="@String.Format("StartTimer('{0}','{1}',{2})",hiddenTimerId,TimerId,Model.Time )">Start</button>
+        <button class="btn btn-default" onclick="StopTimer()">Stop</button>
+
+    </th>
+    <th>
+        @using (Html.BeginForm("Delete", "DashBoard"))
+        {
             @Html.Hidden("TaskItemId", taskItemId);
+            <input class="btn btn-default" type="submit" value="Delete" />
+        }
+    </th>
 
-           @* @Html.TextBox("Time", (object)taskTime , new { @id = TimerId })   This causes some an error described here; https://blogs.msdn.microsoft.com/simonince/2010/05/05/asp-net-mvcs-html-helpers-render-the-wrong-value/*@
-            <input type="text" name="Description" value="@Model.Description" id="Description" />
-            <input type="text" name="Time" value="@Model.Time" id="@TimerId" />
 
-            <input type="submit" value="Save" />
-        </div>
 
-    }
 
-    @using (Html.BeginForm("Delete", "DashBoard"))
-    {
-        @Html.Hidden("TaskItemId", taskItemId);
-        <input type="submit" value="Delete" />
-    }
 
-        <button onclick="@String.Format("StartTimer('{0}',{1})",TimerId,Model.Time )">Start</button>
-        <button onclick="StopTimer()">Stop</button>
-</div>
+
+
+        
+        

@@ -11,7 +11,7 @@ namespace TaskApp.WebUI.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            string TestText = "Hello World!";
+            string TestText = "Welcome to TaskHill the task time tracking app!";
             return View((object)TestText);
         }
     }

@@ -32,15 +32,15 @@ namespace TaskApp.WebUI.Controllers
             return View(_unitOfWork.Tasks.GetAllTasks());
         }
 
-        [HttpPost] //Using model Binding
-        public ActionResult List(TaskItem item)
+        [HttpPost] 
+        public ActionResult List(int TaskItemId, int Time)
         {
             if (ModelState.IsValid)
             {
-                TaskItem obj = _unitOfWork.Tasks.Get(item.TaskItemId);
+                TaskItem obj = _unitOfWork.Tasks.Get(TaskItemId);
                 if (obj != null)
                 {
-                    obj.Time = item.Time;
+                    obj.Time = Time;
                     _unitOfWork.Complete();
                 }
                 return RedirectToAction("List");
