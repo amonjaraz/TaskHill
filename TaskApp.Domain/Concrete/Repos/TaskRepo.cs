@@ -26,20 +26,5 @@ namespace TaskApp.Domain.Concrete.Repos
         {
             return TaskAppContext.Tasks.ToArray();
         }
-
-        public void UpdateParentTasks(TaskItem item, bool increase)
-        {
-            
-
-            TaskItem parentItem;
-            if (item.ParentId != null)
-            {
-                parentItem = this.Get((int)item.ParentId);
-                if (increase) parentItem.Time += item.Time;
-                else parentItem.Time -= item.Time;
-
-                UpdateParentTasks(parentItem, increase);
-            } 
-        }
     }
 }

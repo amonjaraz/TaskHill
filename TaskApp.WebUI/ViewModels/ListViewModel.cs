@@ -10,10 +10,4 @@ namespace TaskApp.WebUI.ViewModels
     {
 
     }
-
-    public class TaskTree
-    {
-        public string Name { get; set; }
-        public List<TaskTree> Children { get; set; }
-    }
 }
